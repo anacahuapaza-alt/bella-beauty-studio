@@ -1,14 +1,17 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
-const config = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+// Configuración de la aplicación web Bella Beauty Studio.
+const firebaseConfig = {
+  apiKey: "AIzaSyC84GLazl2--QE1zU1Kcw13SqQvX-jWuiA",
+  authDomain: "proyecto-38b69.firebaseapp.com",
+  projectId: "proyecto-38b69",
+  storageBucket: "proyecto-38b69.firebasestorage.app",
+  messagingSenderId: "378855420841",
+  appId: "1:378855420841:web:f6873158849423617a4ab8",
+  measurementId: "G-X5J3K9HMD7"
 };
 
-export const firebaseReady = Boolean(config.apiKey && config.projectId && config.appId);
-export const db = firebaseReady ? getFirestore(initializeApp(config)) : null;
+const app = initializeApp(firebaseConfig);
+export const firebaseReady = true;
+export const db = getFirestore(app);
