@@ -1,0 +1,14 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // DEMO: permite crear solicitudes y leer/gestionar citas solo durante pruebas.
+    // Antes de publicar para uso real, activa Firebase Authentication y restringe
+    // lectura/escritura al administrador autenticado. No uses estas reglas en producción.
+    match /appointments/{appointmentId} {
+      allow create: if request.resource.data.keys().hasAll([
+        'clientName', 'email', 'phone', 'serviceId', 'serviceName', 'dateTime', 'status'
+      ]);
+      allow read, update, delete: if true;
+    }
+  }
+}
